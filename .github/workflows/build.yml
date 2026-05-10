@@ -16,7 +16,7 @@ jobs:
 
       # This installs the CLI and the SDK automatically
       - name: Setup Geode SDK
-        uses: geode-sdk/geode@main
+        uses: geode-sdk/geode@main/.github/actions/setup-cache
         with:
           # This installs the latest 2026 stable version
           sdk: latest
