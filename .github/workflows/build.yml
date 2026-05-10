@@ -7,26 +7,25 @@ on:
 
 jobs:
   build:
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-        - name: Windows
-          os: windows-latest
-        - name: Android
-          os: ubuntu-latest
-          target: Android64
-
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    name: Windows Build
+    runs-on: windows-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # This installs the CLI and the SDK automatically
+      - name: Setup Geode SDK
+        uses: geode-sdk/setup-geode@v2
+        with:
+          # This installs the latest 2026 stable version
+          sdk: latest
+          # This ensures the CLI is available for the build step
+          cli: latest
+
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          sdk: latest
-          target: ${{ matrix.config.target }}
+          # Now that setup-geode is used, this will find the path instantly
+          target: Win64
           combine: true
