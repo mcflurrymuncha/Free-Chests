@@ -14,18 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # This installs the CLI and the SDK automatically
-      - name: Setup Geode SDK
-        uses: geode-sdk/geode@v1
-        with:
-          # This installs the latest 2026 stable version
-          sdk: latest
-          # This ensures the CLI is available for the build step
-          cli: latest
-
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          # Now that setup-geode is used, this will find the path instantly
+          sdk: latest
           target: Win64
           combine: true
