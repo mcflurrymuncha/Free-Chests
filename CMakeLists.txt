@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.13)
 
-# This tells CMake where to find the Geode logic if the environment is fresh
-if(NOT GEODE_LOADED)
-    find_package(Geode REQUIRED)
-endif()
+set(CMAKE_PREFIX_PATH $ENV{GEODE_SDK})
+
+find_package(Geode REQUIRED)
 
 project(FreeChests)
 
