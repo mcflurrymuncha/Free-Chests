@@ -27,5 +27,7 @@ jobs:
       - name: Build Mod
         uses: geode-sdk/build-geode-mod@main
         with:
+          # This ensures the SDK is actually downloaded to the virtual machine
+          sdk: nightly 
           target: ${{ matrix.config.target }}
           combine: true
