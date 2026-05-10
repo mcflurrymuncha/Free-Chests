@@ -1,11 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
 
-# Force CMake to find the SDK folder provided by the GitHub Action
-if(DEFINED ENV{GEODE_SDK})
-    set(Geode_DIR "$ENV{GEODE_SDK}")
+# This tells CMake where to find the Geode logic if the environment is fresh
+if(NOT GEODE_LOADED)
+    find_package(Geode REQUIRED)
 endif()
-
-find_package(Geode REQUIRED)
 
 project(FreeChests)
 
