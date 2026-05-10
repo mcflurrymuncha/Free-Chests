@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.13)
 
-# This line is crucial for the build server to find Geode
-if(NOT GEODE_LOADED)
-    find_package(Geode REQUIRED)
+# Force CMake to find the SDK folder provided by the GitHub Action
+if(DEFINED ENV{GEODE_SDK})
+    set(Geode_DIR "$ENV{GEODE_SDK}")
 endif()
+
+find_package(Geode REQUIRED)
 
 project(FreeChests)
 
